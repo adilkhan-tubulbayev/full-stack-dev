@@ -1,0 +1,1 @@
+devops helps developers & system admins combine writing code as well as ensuring sustainability of the project. Thus, it promotes automation of repetitive tasks such as testing, deployment and infrastructure management. This imporoves efficiency and reduces errors.
