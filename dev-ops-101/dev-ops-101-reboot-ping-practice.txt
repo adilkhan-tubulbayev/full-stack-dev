@@ -1,0 +1,51 @@
+PING 165.232.73.26 (165.232.73.26) 56(84) bytes of data.
+64 bytes from 165.232.73.26: icmp_seq=1 ttl=64 time=0.028 ms
+64 bytes from 165.232.73.26: icmp_seq=2 ttl=64 time=0.044 ms
+64 bytes from 165.232.73.26: icmp_seq=3 ttl=64 time=0.034 ms
+64 bytes from 165.232.73.26: icmp_seq=4 ttl=64 time=0.039 ms
+64 bytes from 165.232.73.26: icmp_seq=5 ttl=64 time=0.045 ms
+
+--- 165.232.73.26 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4088ms
+rtt min/avg/max/mdev = 0.028/0.038/0.045/0.006 ms
+
+PING 165.232.73.26 (165.232.73.26) 56(84) bytes of data.
+64 bytes from 165.232.73.26: icmp_seq=8 ttl=51 time=81.8 ms
+64 bytes from 165.232.73.26: icmp_seq=9 ttl=51 time=81.1 ms
+64 bytes from 165.232.73.26: icmp_seq=10 ttl=51 time=80.5 ms
+64 bytes from 165.232.73.26: icmp_seq=11 ttl=51 time=80.9 ms
+64 bytes from 165.232.73.26: icmp_seq=12 ttl=51 time=80.6 ms
+^C
+--- 165.232.73.26 ping statistics ---
+12 packets transmitted, 5 received, 58.3333% packet loss, time 11080ms
+rtt min/avg/max/mdev = 80.486/80.966/81.769/0.460 ms
+
+root@adilkhan:~# ssh user_server
+kex_exchange_identification: Connection closed by remote host
+Connection closed by 165.232.73.26 port 22
+root@adilkhan:~# ssh user_server
+ssh: connect to host 165.232.73.26 port 22: Connection refused
+root@adilkhan:~# ssh user_server
+Welcome to Ubuntu 24.04.1 LTS (GNU/Linux 6.8.0-48-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Nov  5 13:53:22 UTC 2024
+
+  System load:  0.66              Processes:             99
+  Usage of /:   61.4% of 8.65GB   Users logged in:       0
+  Memory usage: 38%               IPv4 address for eth0: 165.232.73.26
+  Swap usage:   0%                IPv4 address for eth0: 10.19.0.7
+
+Expanded Security Maintenance for Applications is not enabled.
+
+14 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Tue Nov  5 13:56:25 2024 from 188.130.159.188
