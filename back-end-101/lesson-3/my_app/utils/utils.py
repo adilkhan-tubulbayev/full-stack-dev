@@ -1,13 +1,17 @@
 #cleaning room
 
 def start_cleaning():
-	collect_trash()
-	put_items_back()
-	wipe_dust()
-	vacuum_floor()
-	air_room()
-	make_bed()
+	steps = [
+	collect_trash(),
+	put_items_back(),
+	wipe_dust(),
+	vacuum_floor(),
+	air_room(),
+	make_bed(),
 	fold_things()
+	]
+
+	return "\n".join(steps)
 
 def collect_trash():
 	return "Collect the trash in the bin."
