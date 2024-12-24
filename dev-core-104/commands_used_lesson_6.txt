@@ -1,0 +1,55 @@
+root@adilkhan:~/full-stack-dev/dev-core-104# touch file.txt
+root@adilkhan:~/full-stack-dev/dev-core-104# echo "Line 1" > file.txt
+root@adilkhan:~/full-stack-dev/dev-core-104# cat file.txt
+Line 1
+root@adilkhan:~/full-stack-dev/dev-core-104# echo "Line 2" >> file.txt
+root@adilkhan:~/full-stack-dev/dev-core-104# cat file.txt
+Line 1
+Line 2
+root@adilkhan:~/full-stack-dev/dev-core-104# less file.txt
+root@adilkhan:~/full-stack-dev/dev-core-104# head -n 2 file.txt
+Line 1
+Line 2
+root@adilkhan:~/full-stack-dev/dev-core-104# tail -n 1 file.txt
+Line 2
+root@adilkhan:~/full-stack-dev/dev-core-104# touch file2.txt
+root@adilkhan:~/full-stack-dev/dev-core-104# ls
+commands_used.txt  file.txt  file2.txt
+root@adilkhan:~/full-stack-dev/dev-core-104# mkdir file_dir
+root@adilkhan:~/full-stack-dev/dev-core-104# ls
+commands_used.txt  file.txt  file2.txt  file_dir
+root@adilkhan:~/full-stack-dev/dev-core-104# mv file.txt file_dir/
+root@adilkhan:~/full-stack-dev/dev-core-104# ls
+commands_used.txt  file2.txt  file_dir
+root@adilkhan:~/full-stack-dev/dev-core-104# mv file2.txt file_dir/
+root@adilkhan:~/full-stack-dev/dev-core-104# ls
+commands_used.txt  file_dir
+root@adilkhan:~/full-stack-dev/dev-core-104# cd file_dir/
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# ls
+file.txt  file2.txt
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# mv file2.txt file22.txt
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# ls
+file.txt  file22.txt
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# rm file22.txt
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# rm file.txt
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# ls
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# cd ..
+root@adilkhan:~/full-stack-dev/dev-core-104# mkdir new_file_dir
+root@adilkhan:~/full-stack-dev/dev-core-104# ls
+commands_used.txt  file_dir  new_file_dir
+root@adilkhan:~/full-stack-dev/dev-core-104# mv new_file_dir/ file_dir/
+root@adilkhan:~/full-stack-dev/dev-core-104# ls
+commands_used.txt  file_dir
+root@adilkhan:~/full-stack-dev/dev-core-104# cd file_dir/
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# ls
+new_file_dir
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# touch root-test.txt
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# ls
+new_file_dir  root-test.txt
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# mv root-test.txt /root/
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# ls
+new_file_dir
+root@adilkhan:~/full-stack-dev/dev-core-104/file_dir# cd ~
+root@adilkhan:~# ls
+full-stack-dev  project  python-types  root-test.txt  snap
+

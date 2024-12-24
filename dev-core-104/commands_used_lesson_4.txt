@@ -1,0 +1,158 @@
+///Description of commands:
+
+
+mkdir [directory_name]
+Creates a new directory with the specified name.
+
+ls
+Lists the contents of the current directory.
+
+cd [directory_name]
+Changes the current working directory to the specified one.
+
+pwd
+Displays the full path of the current working directory.
+
+touch [file_name]
+Creates an empty file with the specified name or updates the timestamp if it already exists.
+
+cp [source] [destination]
+Copies files or directories from the source to the destination.
+
+mv [source] [destination]
+Moves or renames files or directories.
+
+rm [file_name]
+Deletes the specified file.
+
+rm -r [directory_name]
+Deletes a directory and all of its contents recursively.
+
+
+///Here is the command history:
+
+
+root@adilkhan:~# mkdir adventure_journey
+root@adilkhan:~# ls
+adventure_journey  full-stack-dev  project  python-types  snap
+root@adilkhan:~# cd adventure_journey/
+root@adilkhan:~/adventure_journey# touch journal.txt
+root@adilkhan:~/adventure_journey# ls
+journal.txt
+root@adilkhan:~/adventure_journey# pwd
+/root/adventure_journey
+root@adilkhan:~/adventure_journey# mkdir maps
+root@adilkhan:~/adventure_journey# mkdir inventory
+root@adilkhan:~/adventure_journey# ls
+inventory  journal.txt  maps
+root@adilkhan:~/adventure_journey# cd maps/
+root@adilkhan:~/adventure_journey/maps# touch map1.txt
+root@adilkhan:~/adventure_journey/maps# cp map1.txt ../inventory/forest_map.txt
+root@adilkhan:~/adventure_journey/maps# cd ..
+root@adilkhan:~/adventure_journey# ls
+inventory  journal.txt  maps
+root@adilkhan:~/adventure_journey# cd inventory/
+root@adilkhan:~/adventure_journey/inventory# ls
+forest_map.txt
+root@adilkhan:~/adventure_journey/inventory# touch supplies_list.txt
+root@adilkhan:~/adventure_journey/inventory# cd ..
+root@adilkhan:~/adventure_journey# ls maps/
+map1.txt
+root@adilkhan:~/adventure_journey# touch map2.txt
+root@adilkhan:~/adventure_journey# mv map2.txt mountain_map.txt
+root@adilkhan:~/adventure_journey# ls
+inventory  journal.txt  maps  mountain_map.txt
+root@adilkhan:~/adventure_journey# rm mountain_map.txt
+root@adilkhan:~/adventure_journey# cd maps
+root@adilkhan:~/adventure_journey/maps# ls
+map1.txt
+root@adilkhan:~/adventure_journey/maps# touch map2.txt
+root@adilkhan:~/adventure_journey/maps# ls
+map1.txt  map2.txt
+root@adilkhan:~/adventure_journey/maps# mv map2.txt mountain_map.txt
+root@adilkhan:~/adventure_journey/maps# ls
+map1.txt  mountain_map.txt
+root@adilkhan:~/adventure_journey/maps# cp mountain_map.txt ../inventory/backup_mountain_map.txt
+root@adilkhan:~/adventure_journey/maps# cd ..
+root@adilkhan:~/adventure_journey# ls
+inventory  journal.txt  maps
+root@adilkhan:~/adventure_journey# cd inventory/
+root@adilkhan:~/adventure_journey/inventory# ls
+backup_mountain_map.txt  forest_map.txt  supplies_list.txt
+root@adilkhan:~/adventure_journey/inventory# cd ..
+root@adilkhan:~/adventure_journey# ls
+inventory  journal.txt  maps
+root@adilkhan:~/adventure_journey# cd maps/
+root@adilkhan:~/adventure_journey/maps# ls
+map1.txt  mountain_map.txt
+root@adilkhan:~/adventure_journey/maps# cd ..
+root@adilkhan:~/adventure_journey# ls
+inventory  journal.txt  maps
+root@adilkhan:~/adventure_journey# mv journal.txt inventory/
+root@adilkhan:~/adventure_journey# ls
+inventory  maps
+root@adilkhan:~/adventure_journey# cd inventory/
+root@adilkhan:~/adventure_journey/inventory# ls
+backup_mountain_map.txt  forest_map.txt  journal.txt  supplies_list.txt
+root@adilkhan:~/adventure_journey/inventory# cd ..
+root@adilkhan:~/adventure_journey# ls
+inventory  maps
+root@adilkhan:~/adventure_journey# mkdir logs
+root@adilkhan:~/adventure_journey# ls
+inventory  logs  maps
+root@adilkhan:~/adventure_journey# cd logs
+root@adilkhan:~/adventure_journey/logs# ls
+root@adilkhan:~/adventure_journey/logs# touch log_day1.txt
+root@adilkhan:~/adventure_journey/logs# touch log_day2.txt
+root@adilkhan:~/adventure_journey/logs# ls
+log_day1.txt  log_day2.txt
+root@adilkhan:~/adventure_journey/logs# mv log_day1.txt ../inventory/
+root@adilkhan:~/adventure_journey/logs# cd ..
+root@adilkhan:~/adventure_journey# ls
+inventory  logs  maps
+root@adilkhan:~/adventure_journey# cd inventory/
+root@adilkhan:~/adventure_journey/inventory# ls
+backup_mountain_map.txt  forest_map.txt  journal.txt  log_day1.txt  supplies_list.txt
+root@adilkhan:~/adventure_journey/inventory# rm backup_mountain_map.txt
+root@adilkhan:~/adventure_journey/inventory# ls
+forest_map.txt  journal.txt  log_day1.txt  supplies_list.txt
+root@adilkhan:~/adventure_journey/inventory# cd ..
+root@adilkhan:~/adventure_journey# ls
+inventory  logs  maps
+root@adilkhan:~/adventure_journey# cd logs
+root@adilkhan:~/adventure_journey/logs# ls
+log_day2.txt
+root@adilkhan:~/adventure_journey/logs# mv log_day2.txt log_day2_mountain.txt
+root@adilkhan:~/adventure_journey/logs# ls
+log_day2_mountain.txt
+root@adilkhan:~/adventure_journey/logs# cd ..
+root@adilkhan:~/adventure_journey# cd logs
+root@adilkhan:~/adventure_journey/logs# cd ../maps
+root@adilkhan:~/adventure_journey/maps# ls
+map1.txt  mountain_map.txt
+root@adilkhan:~/adventure_journey/maps# mkdir backup_maps
+root@adilkhan:~/adventure_journey/maps# ls
+backup_maps  map1.txt  mountain_map.txt
+root@adilkhan:~/adventure_journey/maps# cp mountain_map.txt backup_maps/
+root@adilkhan:~/adventure_journey/maps# ls
+backup_maps  map1.txt  mountain_map.txt
+root@adilkhan:~/adventure_journey/maps# cd backup_maps/
+root@adilkhan:~/adventure_journey/maps/backup_maps# ls
+mountain_map.txt
+root@adilkhan:~/adventure_journey/maps/backup_maps# cd ..
+root@adilkhan:~/adventure_journey/maps# cd ..
+root@adilkhan:~/adventure_journey# ls
+inventory  logs  maps
+root@adilkhan:~/adventure_journey# cd inventory/
+root@adilkhan:~/adventure_journey/inventory# ls
+forest_map.txt  journal.txt  log_day1.txt  supplies_list.txt
+root@adilkhan:~/adventure_journey/inventory# rm supplies_list.txt
+root@adilkhan:~/adventure_journey/inventory# ls
+forest_map.txt  journal.txt  log_day1.txt
+root@adilkhan:~/adventure_journey/inventory# cd ..
+root@adilkhan:~/adventure_journey# cd ..
+root@adilkhan:~# ls
+adventure_journey  full-stack-dev  project  python-types  snap
+root@adilkhan:~# rm -r adventure_journey/
+root@adilkhan:~# ls
+full-stack-dev  project  python-types  snap

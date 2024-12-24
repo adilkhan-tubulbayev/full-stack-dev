@@ -1,0 +1,8 @@
+///List of commands:
+printenv
+echo $PATH - shows directories
+echo $HOME - shows home directory
+echo $USER - shows name of user
+echo $SHELL - directory to the shell
+export MY_VAR="lesson7" - creates temporary variable (available only in current session)
+echo $MY_VAR - shows value of the variable

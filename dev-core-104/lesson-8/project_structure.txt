@@ -1,0 +1,30 @@
+project/:
+docs  src  tests
+
+project/docs:
+
+project/src:
+main.py  readme.txt
+
+project/tests:
+
+mkdir project
+Create the project directory in the home directory.
+
+mkdir project/docs project/src project/tests
+Create the subdirectories docs, src, and tests inside the project directory.
+
+touch project/docs/readme.txt
+Create an empty file named readme.txt inside the docs directory.
+
+echo "Project Documentation" > project/docs/readme.txt
+Add the text "Project Documentation" to the readme.txt file.
+
+touch project/src/main.py
+Create an empty file named main.py inside the src directory.
+
+mv project/docs/readme.txt project/src/
+Move the readme.txt file from the docs directory to the src directory.
+
+ls -R project > project_structure.txt
+List the structure of the project directory recursively and save the output to project_structure.txt.

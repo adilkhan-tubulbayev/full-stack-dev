@@ -1,0 +1,35 @@
+cd [directory]
+Navigate to the specified directory.
+
+ls
+List the contents of the current directory.
+
+touch [file]
+Create an empty file.
+
+rm [file]
+Remove the specified file.
+
+chmod u+x [file]
+Grant execute permissions to the user for the specified file.
+
+vim [file]
+Open the file for editing in the Vim text editor.
+
+./[script]
+Execute a script located in the current directory.
+
+cat [file]
+Display the contents of a file.
+
+grep [pattern] [file]
+Search for lines matching a pattern in a file.
+
+> [file]
+Redirect the output of a command to a specified file.
+
+tree
+Display the directory structure in a tree format.
+
+ls -R
+List the contents of the current directory and all subdirectories recursively.

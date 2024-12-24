@@ -1,0 +1,23 @@
+root@adilkhan:~# touch log.txt
+root@adilkhan:~# vim log.txt
+root@adilkhan:~# grep error log.txt
+root@adilkhan:~# wc -l log.txt
+10 log.txt
+root@adilkhan:~# find *.txt
+log.txt
+root@adilkhan:~#
+
+touch log.txt
+Create an empty file named log.txt.
+
+vim log.txt
+Open the log.txt file for editing in the Vim text editor.
+
+grep error log.txt
+Search for lines containing the word "error" in log.txt.
+
+wc -l log.txt
+Count the number of lines in log.txt.
+
+find *.txt
+Find all files with the .txt extension in the current directory.
