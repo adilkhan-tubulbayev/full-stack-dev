@@ -1,0 +1,41 @@
+.activity {
+	width: 800px;
+	height: 150px;
+	border-radius: 5px;
+}
+
+.travel {
+	background-color: #CE84AD;
+	padding: 10px 20px;
+	margin: 0 auto;
+}
+
+.sport {
+	background-color: #CE96A6;
+	padding: 25px 35px 30px 20px;
+	margin: 20px auto;
+}
+
+.culinary {
+	background-color: #D1A7A0;
+	padding: 10px;
+	margin: 30px auto;
+}
+
+.paragraph {
+	padding: 20px;
+	border-radius: 10px;
+	margin: 20px 30px;
+}
+
+.text-travel {
+	background-color: #E3D26F;
+}
+
+.text-sport {
+	background-color: #CA895F;
+}
+
+.text-culinary {
+	background-color: #A15E49;
+}

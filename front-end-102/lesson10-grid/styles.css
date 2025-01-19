@@ -1,0 +1,31 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.grid-container {
+	background-color: #E5DADA;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: 100px 1fr 100px;
+	gap: 20px;
+}
+
+.header {
+	background-color: #247BA0;
+	grid-column: 1 / -1;
+}
+
+.sidebar {
+	background-color: #70C1B3;
+}
+
+.content {
+	background-color: #F3FFBD;
+}
+
+.footer {
+	background-color: #FF1654;
+	grid-column: 1 / -1;
+}

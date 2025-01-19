@@ -1,0 +1,31 @@
+.btn {
+	padding: 10px;
+	background-color: #F7934C;
+	border: none;
+}
+
+.btn:hover {
+	background-color: #efaf81;
+	cursor: pointer;
+}
+
+.btn::before {
+	content: ">>>";
+	font-size: 20px;
+}
+
+.btn::after {
+	content: "<<<";
+	font-size: 20px;
+}
+
+p::first-letter {
+	font-size: 30px;
+	font-weight: bold;
+	color: red;
+}
+
+p:nth-child(odd) {
+	background-color: #efaf81;
+	border-radius: 5px;
+}

@@ -1,0 +1,39 @@
+.color-samples{
+	width: 300px;
+	height: 150px;
+	margin: 15px auto;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.color-hex {
+	background-color: #FFE2D1;
+}
+
+.color-rgb {
+	background-color: rgb(235, 81, 96);
+}
+
+.color-hsl {
+	background-color: hsl(203, 36%, 44%);
+}
+
+.image-samples {
+	width: 300px;
+	height: 300px;
+	margin: 10px auto;
+	border-radius: 10px;
+}
+
+.img-color {
+	border: 5px solid #9D79BC;
+	background-color: #A14DA0;
+}
+
+.img-background {
+	border: 3px dashed #FFA69E;
+	background-image: url('https://picsum.photos/200');
+	background-repeat: no-repeat;
+	/* background-position: right bottom; */
+	background-size: contain;
+}

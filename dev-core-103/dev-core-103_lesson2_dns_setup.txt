@@ -1,0 +1,56 @@
+root@adilkhan:~# dig kazmentor.kz
+
+; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> kazmentor.kz
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 64134
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;kazmentor.kz.                  IN      A
+
+;; ANSWER SECTION:
+kazmentor.kz.           1876    IN      A       161.35.199.137
+
+;; Query time: 253 msec
+;; SERVER: 10.255.255.254#53(10.255.255.254) (UDP)
+;; WHEN: Wed Dec 25 08:47:59 +05 2024
+;; MSG SIZE  rcvd: 46
+
+root@adilkhan:~# dig me.kazmentor.kz CNAME
+
+; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> me.kazmentor.kz CNAME
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 34989
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;me.kazmentor.kz.               IN      CNAME
+
+;; ANSWER SECTION:
+me.kazmentor.kz.        300     IN      CNAME   kazmentor.kz.
+
+;; Query time: 121 msec
+;; SERVER: 10.255.255.254#53(10.255.255.254) (UDP)
+;; WHEN: Wed Dec 25 08:48:05 +05 2024
+;; MSG SIZE  rcvd: 58
+
+root@adilkhan:~# nslookup kazmentor.kz
+Server:         10.255.255.254
+Address:        10.255.255.254#53
+
+Non-authoritative answer:
+Name:   kazmentor.kz
+Address: 161.35.199.137
+
+root@adilkhan:~# nslookup me.kazmentor.kz
+Server:         10.255.255.254
+Address:        10.255.255.254#53
+
+Non-authoritative answer:
+me.kazmentor.kz canonical name = kazmentor.kz.
+Name:   kazmentor.kz
+Address: 161.35.199.137
