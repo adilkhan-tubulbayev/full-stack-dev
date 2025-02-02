@@ -1,10 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hobby from '../../components/Hobby.astro';
 ---
 
 <Layout>
-
+	<h1 class="text-gray-500 text-[30px] ml-2 sm:text-[36px] md:text-[48px]">Hobbies.</h1>
+	<main>
+		<section class="flex flex-col h-[90vh] justify-between items-center p-2 gap-3">
+			<Hobby />
+		</section>
+	</main>
 </Layout>

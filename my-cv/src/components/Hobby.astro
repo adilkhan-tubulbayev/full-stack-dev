@@ -1,0 +1,22 @@
+---
+const hobby = [
+	{
+		name : "Music",
+		bgColor: "peach",
+	},
+	{
+		name : "Gym",
+		bgColor: "royalblue",
+	},
+	{
+		name : "Programming",
+		bgColor: "hotpink",
+	},
+]
+---
+
+{hobby.map(hobby => (
+  <div class={`flex justify-center items-center border-border border-[5px] border-dashed rounded-lg h-[300px] w-full bg-${hobby.bgColor}`}>
+    <h3 class="uppercase text-center text-2xl md:text-3xl lg:text-4xl">{hobby.name}</h3>
+  </div>
+))}

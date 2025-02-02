@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Project from '../../components/Project.astro';
+---
+
+<Layout>
+	<h1 class="text-gray-500 text-[30px] ml-3 sm:text-[36px] md:text-[48px]">Projects.</h1>
+	<h2 class="text-text-primary mb-3 text-lg leading-[1.3] ml-3 font-bold sm:text-xl md:text-2xl">Source code can be viewed via my GitHub profile link.</h2>
+
+	<main>
+		<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 p-3 justify-start">
+			<Project />
+		</section>
+	</main>
+
+	<div class="flex justify-center">
+		<a class="flex p-3 gap-3 pr-5 border-border border-[3px] w-[300px] border-solid rounded-lg justify-center items-center" href="https://github.com/adilkhan-tubulbayev" target="_blank">
+			<img class="w-[40px] h-[30px] sm:w-[50px] sm:h-[40px] rounded-full" src="src/assets/media/github-mark.png" alt="github">
+			<h3 class="text-text-primary">GitHub</h3>
+		</a>
+	</div>
+</Layout>

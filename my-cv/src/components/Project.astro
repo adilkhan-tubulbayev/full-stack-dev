@@ -1,0 +1,36 @@
+---
+const project = [
+	{
+		name: "Restaurant Business",
+		description: "School CS Project.",
+		image: "src/assets/media/restaurant.jpg",
+		alt: "restaurant",
+	},
+	{
+		name: "Kazmentor",
+		description: "Educational Game.",
+		image: "src/assets/media/kazmentor.jpg",
+		alt: "kazmentor",
+	},
+	{
+		name: "Game by Pygame",
+		description: "School project (in progress).",
+		image: "src/assets/media/pygame.jpg",
+		alt: "pygame",
+	},
+	{
+		name: "Astro",
+		description: "My Portfolio",
+		image: "src/assets/media/astro.jpg",
+		alt: "astro",
+	},
+]
+---
+
+{project.map(project =>(
+	<div class="flex flex-col w-[300px] sm:w-[400px] sm:h-[350px] border-[4px] border-border border-dashed rounded-xl justify-center items-center gap-3 p-3 m-auto">
+		<img class="cursor-pointer w-[150px] h-[150px] sm:w-[230px] sm:h-[230px] rounded-2xl border-dashed border-[3px] border-border" src={project.image} alt={project.alt}>
+		<h3 class="text-text-primary text-center text-base sm:text-lg md:text-xl">{project.name}</h3>
+		<p class="text-center text-sm sm:text-base md:text-lg text-gray-500">{project.description}</p>
+	</div>
+))}

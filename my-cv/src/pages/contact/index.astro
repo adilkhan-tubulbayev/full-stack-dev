@@ -1,10 +1,31 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
+	<h1 class="text-gray-500 text-[30px] ml-1 sm:text-[36px] md:text-[48px]">Contact.</h1>
+	<div class="flex gap-3">
+		<h2 class="mb-3 text-lg leading-[1.3] ml-1 font-bold sm:text-xl md:text-2xl text-text-primary">In Touch</h>
+		<h2 class="mb-3 text-lg leading-[1.3] ml-1 font-bold sm:text-xl md:text-2xl text-text-primary">In Touch</h>
+		<h2 class="mb-3 text-lg leading-[1.3] ml-1 font-bold sm:text-xl md:text-2xl text-text-primary">In Touch</h>
+	</div>
 
+	<form action="" class="flex flex-col h-[70vh] gap-7 p-2" id="contactForm">
+		<input required class="border-black border-[4px] border-dashed rounded-lg p-8 outline-none text-sm h-[120px] md:m-auto md:w-1/2 name" type="text" name="name" placeholder="Name" class="name" >
+		<p class="hidden leading-none text-sm m-auto text-red-400 name-error">Incorrect name.</p>
+		<input required class="border-black border-[4px] border-dashed rounded-lg p-8 outline-none text-sm h-[120px] md:m-auto md:w-1/2" type="email" name="email" placeholder="Email" class="email">
+		<p class="hidden leading-none text-sm m-auto text-red-400 email-error">Incorrect email.</p>
+		<textarea required class="border-black border-[4px] border-dashed rounded-lg p-8 outline-none text-sm h-[170px] md:m-auto md:w-1/2" name="message" id="textarea" placeholder="How Can I Help You?" class="message"></textarea>
+		<button class="border-border text-text-primary hover:bg-btn-text border-[4px] border-solid rounded-lg pt-4 pb-4 pr-5 pl-5 outline-none text-base text-center m-auto md:w-1/4 submit-btn" type="submit">submit</button>
+	</form>
 </Layout>
+
+<!-- <style>
+	input:invalid, textarea:invalid {
+		border: 2px solid red;
+	}
+
+	input:valid, textarea:valid {
+		border: 2px solid green;
+	}
+</style> -->

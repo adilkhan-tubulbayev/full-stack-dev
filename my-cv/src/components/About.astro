@@ -1,0 +1,10 @@
+---
+interface Props {
+	p?: string,
+	h3?: string,
+}
+
+const {h3, p} = Astro.props;
+---
+<h3 class="text-text-primary text-left text-base uppercase sm:text-lg md:text-xl lg:text-2xl">{h3}</h3>
+<p class="text-sm text-gray-500 sm:text-base md:text-lg lg:text-xl">{p}</p>
