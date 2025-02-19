@@ -41,4 +41,4 @@ async def create_tasks(user: UserData):
 	contactForm.append(user_dict)
 	with open(file_path, 'w') as file:
 		json.dump(contactForm, file)
-	return contactForm
+	return user

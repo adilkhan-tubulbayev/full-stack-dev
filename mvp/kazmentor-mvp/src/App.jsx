@@ -6,6 +6,9 @@ import RegistrationPage from "./app/entry/RegistrationPage";
 import Login from "./Login";
 import Register from "./Register";
 import Game from "./Game";
+import { Input } from "./components/ui/input";
+import { Button } from "@/components/ui/button"
+import Test from "./Test";
 
 export default function App() {
 	return(
@@ -16,6 +19,7 @@ export default function App() {
 					<Route path="/login" element={<Login/>}/>
 					<Route path="/register" element={<Register/>}/>
 					<Route path="/game" element={<Game/>}/>
+					<Route path="/test" element={<Test/>}/>
 				</Routes>
 			</BrowserRouter>
 		</>

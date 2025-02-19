@@ -8,8 +8,14 @@ export function RegistrationForm({
 	className,
 	...props
 }) {
+
+	function handleFormData(formData){
+		const data = Object.fromEntries(formData);
+		console.log(data);
+	}
+
 	return (
-		(<form className={cn("flex flex-col gap-6", className)} {...props}>
+		(<form action={handleFormData} className={cn("flex flex-col gap-6", className)} {...props}>
 			<div className="flex flex-col items-center gap-2 text-center">
 				<h1 className="text-2xl font-bold">Sign up an account</h1>
 				<p className="text-balance text-sm text-muted-foreground">
@@ -19,19 +25,20 @@ export function RegistrationForm({
 			<div className="grid gap-6">
 				<div className="grid gap-2">
 					<Label htmlFor="email">Email</Label>
-					<Input id="email" type="email" placeholder="m@example.com" required />
+					<Input name="email" id="email" type="email" placeholder="m@example.com" required />
+					<p className="text-red-500 hidden">incorrect</p>
 				</div>
 				<div className="grid gap-2">
 					<div className="flex items-center">
 						<Label htmlFor="password">Password</Label>
 					</div>
-					<Input id="password" type="password" required />
+					<Input name="password" id="password" type="password" required />
 				</div>
 				<div className="grid gap-2">
 					<div className="flex items-center">
 						<Label htmlFor="password">Repeat Password</Label>
 					</div>
-					<Input id="password" type="password" required />
+					<Input name="repeatedPassword" id="password" type="password" required />
 				</div>
 				<Button type="submit" className="w-full">
 					Sign Up
