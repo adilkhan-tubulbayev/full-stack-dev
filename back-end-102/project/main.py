@@ -62,12 +62,24 @@ class UserCreate(BaseModel):
 	password: str
 
 class UserProfile(BaseModel):
-	username: str
-	age: str
-	bio: str
+	id: int
+	firstName: str
+	lastName: str
+	age: int
+	bio: str | None = None
+
+class UserProfileCreate(BaseModel):
+	firstName: str
+	lastName: str
+	age: int
+	bio: str | None = None
 
 users = [
 	User(id=1, email="adil@gmail.com", password="adil")
+]
+
+users_profile = [
+	UserProfile(id=1, firstName="Adilkhan", lastName="Tubulbayev", age=19, bio="NIS Student.")
 ]
 
 app = FastAPI()
@@ -81,6 +93,11 @@ async def health():
 @app.get("/users")
 async def get_users():
 	return users
+
+@app.get("/user/profile")
+async def get_user_profile():
+	return users_profile
+
 
 @app.get("/user/{user_id}")
 async def get_user_by_id(user_id: int):
@@ -103,6 +120,17 @@ async def create_user(user: User):
 	)
 	users.append(new_user)
 	return users
+
+@app.put("/user/profile")
+async def update_user_profile(token: str, user_profile: UserProfileCreate):
+	user_data = verify_access_token(token)
+	for u in users_profile:
+		if u.id == user_data['id']:
+			u.firstName = user_profile.firstName
+			u.lastName = user_profile.lastName
+			u.age = user_profile.age
+			u.bio = user_profile.bio
+			return u
 
 @app.put("/user/{user_id}")
 async def update_user(user_id: int, user: User):
@@ -214,3 +242,17 @@ async def logout_user(token: str):
 	user_data = verify_access_token(token)
 	active_refresh_tokens.clear()
 	return {"message" : "successfully logged out."}
+
+@app.post("/user/profile")
+async def create_user_profile(token: str, user_profile: UserProfileCreate):
+	user_data = verify_access_token(token)
+	user = UserProfile(
+		id = len(users_profile) + 1,
+		firstName = user_profile.firstName,
+		lastName = user_profile.lastName,
+		age = user_profile.age,
+		bio = user_profile.bio,
+	)
+	users_profile.append(user)
+	return user
+
