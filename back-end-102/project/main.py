@@ -142,6 +142,7 @@ async def update_user(user_id: int, user: User):
 	return users
 	return {"message" : "user doesn't exist"}
 
+
 @app.delete("/user/{user_id}")
 async def delete_user(user_id: int):
 	for u in users:
