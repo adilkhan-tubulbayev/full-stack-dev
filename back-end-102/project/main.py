@@ -6,6 +6,7 @@ from jose import jwt, JWTError
 from datetime import datetime, timedelta, timezone
 import secrets
 from uuid import uuid4
+
 #Configuration for JWT
 SECRET_KEY = secrets.token_hex(32)
 ALGORITHM = "HS256"
@@ -65,7 +66,7 @@ class UserProfile(BaseModel):
 	id: int
 	firstName: str
 	lastName: str
-	age: int
+	age: int | None = None
 	bio: str | None = None
 
 class UserProfileCreate(BaseModel):
@@ -94,9 +95,16 @@ async def health():
 async def get_users():
 	return users
 
-@app.get("/user/profile")
-async def get_user_profile():
+@app.get("/users/profile")
+async def get_users_profile():
 	return users_profile
+
+@app.get("/user/profile")
+async def get_user_profile(token: str):
+	user_data = verify_access_token(token)
+	for u in users_profile:
+		if u.id == user_data['id']:
+			return u
 
 
 @app.get("/user/{user_id}")
@@ -167,6 +175,16 @@ async def user_register(user: UserCreate):
 			role="user",
 		)
 		users.append(new_user)
+
+		new_user_profile = UserProfile(
+			id=len(users_profile) + 1,
+			firstName="",
+			lastName="",
+			age=None,
+			bio="",
+		)
+		users_profile.append(new_user_profile)
+
 		return users
 
 @app.post("/auth/login")
@@ -244,16 +262,16 @@ async def logout_user(token: str):
 	active_refresh_tokens.clear()
 	return {"message" : "successfully logged out."}
 
-@app.post("/user/profile")
-async def create_user_profile(token: str, user_profile: UserProfileCreate):
-	user_data = verify_access_token(token)
-	user = UserProfile(
-		id = len(users_profile) + 1,
-		firstName = user_profile.firstName,
-		lastName = user_profile.lastName,
-		age = user_profile.age,
-		bio = user_profile.bio,
-	)
-	users_profile.append(user)
-	return user
+# @app.post("/user/profile")
+# async def create_user_profile(token: str, user_profile: UserProfileCreate):
+# 	user_data = verify_access_token(token)
+# 	user = UserProfile(
+# 		id = len(users_profile) + 1,
+# 		firstName = user_profile.firstName,
+# 		lastName = user_profile.lastName,
+# 		age = user_profile.age,
+# 		bio = user_profile.bio,
+# 	)
+# 	users_profile.append(user)
+# 	return user
 
