@@ -12,10 +12,19 @@ SECRET_KEY = secrets.token_hex(32)
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
+active_access_tokens = []
+
 def create_access_token(data: dict):
+	token_id = str(uuid4())
 	to_encode = data.copy()
 	expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-	to_encode.update({"exp" : expire})
+	to_encode.update(
+		{
+			"exp" : expire,
+			"token_id" : token_id,
+		}
+	)
+	active_access_tokens.append(token_id)
 	return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
@@ -23,7 +32,9 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 def verify_access_token(token: str):
 	try:
 		payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-		return payload
+		if payload['token_id'] in active_access_tokens:
+			return payload
+		else: raise HTTPException(status_code=401, detail="Invalid or expired token")
 	except jwt.JWTError:
 		raise HTTPException(status_code=401, detail="Invalid or expired token")
 
@@ -194,6 +205,7 @@ async def user_login(user: UserCreate):
 			if bcrypt.checkpw(user.password.encode('utf-8'), u.password.encode('utf-8')):
 				user_dict = u.model_dump()
 				active_refresh_tokens.clear()
+				active_access_tokens.clear()
 				access_token = create_access_token(user_dict)
 				refresh_token = create_refresh_token(user_dict)
 				return {
@@ -260,6 +272,7 @@ async def user_route(token: str):
 async def logout_user(token: str):
 	user_data = verify_access_token(token)
 	active_refresh_tokens.clear()
+	active_access_tokens.clear()
 	return {"message" : "successfully logged out."}
 
 # @app.post("/user/profile")
@@ -275,3 +288,7 @@ async def logout_user(token: str):
 # 	users_profile.append(user)
 # 	return user
 
+
+
+#FOR ME
+#for /auth/refresh I'm keeping access token
