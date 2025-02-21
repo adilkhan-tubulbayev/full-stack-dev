@@ -98,7 +98,7 @@ app = FastAPI()
 
 @app.get("/health")
 async def health():
-	return {"message" : "fastapi is working"}
+	return {"message" : "fastapi is working now"}
 
 
 #FOR ADMIN (EDITING USERS DATA)
@@ -158,8 +158,8 @@ async def update_user(user_id: int, user: User):
 			u.email = user.email
 			u.password = user.password
 			u.role = user.role
-	return users
-	return {"message" : "user doesn't exist"}
+			return users
+	raise HTTPException(status_code=401, detail="user not found.")
 
 
 @app.delete("/user/{user_id}")
@@ -168,7 +168,7 @@ async def delete_user(user_id: int):
 		if u.id == user_id:
 			users.remove(u)
 			return users
-	return {"message" : "user doesn't exist"}
+	raise HTTPException(status_code=401, detail="user not found.")
 
 
 #FOR USERS (EDITING OWN DATA)
@@ -212,7 +212,7 @@ async def user_login(user: UserCreate):
 					"acccess token: " : access_token,
 					"refresh token: " : refresh_token,
 					}
-	return {"message" : "Invalid email or password"}
+	raise HTTPException(status_code=401, detail="Invalid email or password.")
 
 
 @app.get("/auth/refresh")
