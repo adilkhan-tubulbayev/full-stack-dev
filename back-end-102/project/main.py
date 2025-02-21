@@ -176,8 +176,6 @@ async def delete_user(user_id: int):
 async def user_register(user: UserCreate):
 	for u in users:
 		if u.email == user.email:
-			print('yep')
-			# return {"message" : "user already exists"}
 			raise HTTPException(status_code=409, detail="user already exists")
 		
 	hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
