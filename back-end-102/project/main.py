@@ -9,7 +9,7 @@ from uuid import uuid4
 
 #Configuration for JWT
 SECRET_KEY = secrets.token_hex(32)
-ALGORITHM = "HS256"
+ALGORITHM = "HS256" 
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 active_access_tokens = []
@@ -87,7 +87,7 @@ class UserProfileCreate(BaseModel):
 	bio: str | None = None
 
 users = [
-	User(id=1, email="adil@gmail.com", password="adil")
+	User(id=1, email="adil@gmail.com", password="adil", role="user"),
 ]
 
 users_profile = [
@@ -129,7 +129,7 @@ async def get_user_by_id(user_id: int):
 async def create_user(user: User):
 	for u in users:
 		if u.email == user.email:
-			return {"message" : "user already exists"}
+			raise HTTPException(status_code=409, detail="user already exists.")
 	
 	hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 	new_user = User(
@@ -176,27 +176,29 @@ async def delete_user(user_id: int):
 async def user_register(user: UserCreate):
 	for u in users:
 		if u.email == user.email:
-			return {"message" : "user already exists"}
+			print('yep')
+			# return {"message" : "user already exists"}
+			raise HTTPException(status_code=409, detail="user already exists")
 		
-		hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-		new_user = User(
-			id=len(users) + 1,
-			email=user.email,
-			password=hashed_password,
-			role="user",
-		)
-		users.append(new_user)
+	hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+	new_user = User(
+		id=len(users) + 1,
+		email=user.email,
+		password=hashed_password,
+		role="user",
+	)
+	users.append(new_user)
 
-		new_user_profile = UserProfile(
-			id=len(users_profile) + 1,
-			firstName="",
-			lastName="",
-			age=None,
-			bio="",
-		)
-		users_profile.append(new_user_profile)
+	new_user_profile = UserProfile(
+		id=len(users_profile) + 1,
+		firstName="",
+		lastName="",
+		age=None,
+		bio="",
+	)
+	users_profile.append(new_user_profile)
 
-		return users
+	return users
 
 @app.post("/auth/login")
 async def user_login(user: UserCreate):
