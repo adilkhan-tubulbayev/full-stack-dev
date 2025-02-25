@@ -10,19 +10,19 @@ export default function HomePage() {
 				autoPlay 
 				loop 
 				muted 
-				className="absolute w-screen h-screen object-fill"
+				className="absolute w-screen h-screen object-cover sm:object-fill"
 			>
 				<source src="/kazmentor_intro_web.mp4" type="video/mp4"/>
 			</video>
 			<div className="absolute w-full h-full bg-black opacity-65"></div>
-			<div className="ml-8 absolute flex flex-col gap-4 justify-center items-start w-96 h-full">
-					<p className="text-white uppercase text-2xl">An innovative educational platform with gamification and AI</p>
-					<p className="text-white text-lg leading-[1.2]">
+			<div className="ml-4 mr-4 sm:ml-8 absolute flex flex-col gap-4 justify-center items-start sm:w-96 h-full">
+					<p className="text-white text-base uppercase sm:text-2xl">An innovative educational platform with gamification and AI</p>
+					<p className="text-white text-sm sm:text-lg leading-[1.2]">
 						Immerse yourself in the world of knowledge through interactive 
 						quests with historical figures!
 					</p>
-					<Link to="/login">
-							<Button className="px-28 py-6 bg-white hover:bg-gray-400 text-black cursor-pointer">Play</Button>
+					<Link to="/game">
+							<Button className="px-20 py-3 sm:px-28 sm:py-6 bg-white text-sm hover:bg-gray-400 text-black cursor-pointer">Play</Button>
 					</Link>
 			</div>
 	</>
