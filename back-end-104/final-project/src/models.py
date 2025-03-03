@@ -9,14 +9,13 @@ from sqlalchemy import (
     Text,
     Time,
 		Enum,
-		enum,
 		ForeignKey,
 		text
 )
 from .database import Base
+import enum
 
 ###ENUM CLASSES
-
 class UserRole(enum.Enum):
 	STUDENT = "student"
 	TEACHER = "teacher"
@@ -39,7 +38,6 @@ class QuestStatus(enum.Enum):
 
 
 ###TABLES
-
 class User(Base):
 	__tablename__ = "users"
 
@@ -75,7 +73,6 @@ class Quest(Base):
 	created_at = Column(DateTime)
 	updated_at = Column(DateTime)
 
-
 class QuestProgress(Base):
 	__tablename__ = "quest_progress"
 
@@ -87,7 +84,6 @@ class QuestProgress(Base):
 	completed_at = Column(Date)
 	score = Column(Integer, server_default = 0)
 
-
 class Achievement(Base):
 	__tablename__ = "achievements"
 	
@@ -98,7 +94,6 @@ class Achievement(Base):
 	created_at = Column(DateTime)
 	updated_at = Column(DateTime)
 
-
 class UserAchievement(Base):
 	__tablename__ = "user_achievements"
 
@@ -106,4 +101,3 @@ class UserAchievement(Base):
 	user_id = Column(Integer, ForeignKey("users.id"))
 	achievement_id = Column(Integer, ForeignKey("achievements.id"))
 	achieved_at = Column(DateTime)
-
