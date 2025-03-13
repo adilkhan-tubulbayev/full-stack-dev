@@ -1,5 +1,7 @@
+import { SignedIn, UserButton } from "@clerk/clerk-react";
 import React, { useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
+import { dark } from "@clerk/themes";
 
 export default function Game() {
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -26,6 +28,9 @@ export default function Game() {
   }
 
   return (
+		<>
+		<SignedIn>
+		<UserButton/>
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-gray-900 text-white">
       {/* Пока не нажали кнопку, показываем UI */}
       {!isGameStarted ? (
@@ -80,5 +85,7 @@ export default function Game() {
         </div>
       )}
     </div>
+		</SignedIn>
+		</>
   );
 }

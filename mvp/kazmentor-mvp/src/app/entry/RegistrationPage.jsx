@@ -1,5 +1,3 @@
-import { GalleryVerticalEnd } from "lucide-react"
-
 import { RegistrationForm } from "@/components/registration-form"
 import { Link } from "react-router-dom";
 

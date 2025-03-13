@@ -9,6 +9,8 @@ import Game from "./Game";
 import { Input } from "./components/ui/input";
 import { Button } from "@/components/ui/button"
 import Test from "./Test";
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+
 
 export default function App() {
 	return(
