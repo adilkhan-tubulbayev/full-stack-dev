@@ -1,23 +1,20 @@
-import React from "react";
-import LoginPage from "@/app/entry/LoginPage";
-import { SignIn } from "@clerk/clerk-react";
-
+import React from 'react';
+import { SignIn } from '@clerk/clerk-react';
 
 export default function Login() {
-	return (
-		<>
-			{/* <LoginPage></LoginPage> */}
-			<div className="m-30">
-				<SignIn 
-					signUpUrl="/register" 
-					fallbackRedirectUrl="/game" 
-					appearance={{
-						elements: {
-							// cardBox: {margin: '0 auto'}
-						},
-					}}
-				/>
-			</div>
-		</>
-	)
+  return (
+    <>
+      <div className="flex">
+        <div className="mt-30 ml-85">
+          <SignIn
+            signUpUrl="/register"
+            fallbackRedirectUrl="/game"
+          />
+        </div>
+        <div className="ml-30">
+          <img src="/tesla.gif" alt="Tesla Gif" className="" />
+        </div>
+      </div>
+    </>
+  );
 }
