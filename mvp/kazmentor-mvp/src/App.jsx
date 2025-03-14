@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './HomePage';
+import Landing from './Landing';
 import Login from './Login';
 import Register from './Register';
 import Game from './Game';
@@ -12,7 +12,7 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/game" element={<Game />} />
