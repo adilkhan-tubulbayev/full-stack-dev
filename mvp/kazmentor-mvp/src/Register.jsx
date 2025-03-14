@@ -10,7 +10,7 @@ export default function Register() {
         </div>
         <div className="">
           <img
-            src="/enstein_gif.gif"
+            src="/enstein.gif"
             alt="Enstein Gif"
             className="mt-30 ml-30"
           />
