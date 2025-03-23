@@ -20,7 +20,7 @@ python-versions = ">=3.8"
 
 [[package]]
 name = "sqlalchemy"
-version = "2.0.38"
+version = "2.0.39"
 description = "Database Abstraction Library"
 category = "main"
 optional = false

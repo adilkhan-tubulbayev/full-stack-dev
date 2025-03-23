@@ -11,12 +11,12 @@ SessionLocal = sessionmaker(autocommit = False, autoflush = False, bind = engine
 
 Base = declarative_base()
 
-def test_connection():
-	try:
-		connection = engine.connect()
-		connection.close()
-		print('Success.')
-	except Exception as e:
-		print(f"Connection error: {e}")
-		return False
-	
+# def test_connection():
+# 	try:
+# 		connection = engine.connect()
+# 		Base.metadata.create_all(bind=engine)
+# 		connection.close()
+# 		print('Success.')
+# 	except Exception as e:
+# 		print(f"Connection error: {e}")
+# 		return False
