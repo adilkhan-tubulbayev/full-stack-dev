@@ -14,6 +14,7 @@ from sqlalchemy import (
 )
 from .database import Base
 import enum
+from sqlalchemy.sql import func
 
 ###ENUM CLASSES
 class UserRole(enum.Enum):
@@ -70,8 +71,8 @@ class Quest(Base):
 	description = Column(Text)
 	difficulty = Column(Enum(LevelDifficulty), server_default = LevelDifficulty.EASY)
 	reward_coins = Column(Integer, server_default = 0)
-	created_at = Column(DateTime)
-	updated_at = Column(DateTime)
+	created_at = Column(DateTime, server_default=func.now())
+	updated_at = Column(DateTime, server_default=func.now())
 
 class QuestProgress(Base):
 	__tablename__ = "quest_progress"
@@ -80,8 +81,8 @@ class QuestProgress(Base):
 	user_id = Column(Integer, ForeignKey("users.id"))
 	quest_id = Column(Integer, ForeignKey("quests.id"))
 	status = Column(Enum(QuestStatus), server_default = QuestStatus.NOT_STARTED)
-	started_at = Column(DateTime)
-	completed_at = Column(Date)
+	started_at = Column(DateTime, server_default=func.now())
+	completed_at = Column(Date, server_default=func.now())
 	score = Column(Integer, server_default = 0)
 
 class Achievement(Base):
@@ -91,8 +92,8 @@ class Achievement(Base):
 	name = Column(String(100), nullable = False)
 	description = Column(Text)
 	reward_coins = Column(Integer, server_default = 0)
-	created_at = Column(DateTime)
-	updated_at = Column(DateTime)
+	created_at = Column(DateTime, server_default=func.now())
+	updated_at = Column(DateTime, server_default=func.now())
 
 class UserAchievement(Base):
 	__tablename__ = "user_achievements"
@@ -100,4 +101,4 @@ class UserAchievement(Base):
 	id = Column(Integer, primary_key = True, index = True)
 	user_id = Column(Integer, ForeignKey("users.id"))
 	achievement_id = Column(Integer, ForeignKey("achievements.id"))
-	achieved_at = Column(DateTime)
+	achieved_at = Column(DateTime, server_default=func.now())
