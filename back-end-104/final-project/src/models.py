@@ -1,7 +1,7 @@
 import enum
 from datetime import datetime
-from typing import List
-from sqlalchemy import ForeignKey, String, Integer, Text, Enum, DateTime, UniqueConstraint
+from typing import List, Optional
+from sqlalchemy import ForeignKey, String, Integer, Text, Enum, DateTime, UniqueConstraint, CheckConstraint
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from sqlalchemy.sql import func
 
@@ -54,16 +54,21 @@ class User(Base):
     back_populates = "user",
     cascade = "all, delete-orphan"
   )
+
+  def __repr__(self):
+    return f"<User id={self.id!r} name={self.name!r} email={self.email!r}>"
+
 class UserProfile(Base):
   __tablename__ = "user_profiles"
+  __table_args__ = (UniqueConstraint("user_id", name = "uq_user_profile"),)
 
   id: Mapped[int] = mapped_column(primary_key = True, index = True)
-  user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"))
+  user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id", name="fk_user_profiles_user_id"))
   display_name: Mapped[str] = mapped_column(String(50))
   avatar_url: Mapped[str] = mapped_column(String(255))
-  coins: Mapped[int] = mapped_column(Integer, server_default = "0")
-  level: Mapped[int] = mapped_column(Integer, server_default = "1")
-  experience: Mapped[int] = mapped_column(Integer, server_default = "1")
+  coins: Mapped[int] = mapped_column(Integer, CheckConstraint("coins >= 0"), server_default = "0")
+  level: Mapped[int] = mapped_column(Integer, CheckConstraint("level >= 1"), server_default = "1")
+  experience: Mapped[int] = mapped_column(Integer, CheckConstraint("experience >= 1"), server_default = "1")
 
   user: Mapped["User"] = relationship(
     back_populates = "profile"
@@ -75,7 +80,8 @@ class Quests(Base):
   id: Mapped[int] = mapped_column(Integer, primary_key = True, index = True)
   title: Mapped[str] = mapped_column(String(255), nullable = False)
   description: Mapped[str] = mapped_column(Text)
-  reward_coins: Mapped[int] = mapped_column(Integer, server_default = "0")
+  difficulty: Mapped[LevelDifficulty] = mapped_column(Enum(LevelDifficulty), server_default = LevelDifficulty.EASY.value)
+  reward_coins: Mapped[int] = mapped_column(Integer, CheckConstraint("coins >= 0"), server_default = "0")
   created_at: Mapped[datetime] = mapped_column(DateTime, server_default = func.now())
   updated_at: Mapped[datetime] = mapped_column(DateTime, server_default = func.now(), onupdate = func.now())
 
@@ -89,12 +95,12 @@ class QuestProgress(Base):
   __table_args__ = (UniqueConstraint("user_id", "quest_id", name = "uq_user_quest"),)
 
   id: Mapped[int] = mapped_column(Integer, primary_key = True, index = True)
-  user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"))
+  user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id", name = 'fk_quest_progress_user_id'))
   quest_id: Mapped[int] = mapped_column(Integer, ForeignKey("quests.id"))
   status: Mapped[QuestStatus] = mapped_column(Enum(QuestStatus), server_default = QuestStatus.NOT_STARTED.value)
   started_at: Mapped[datetime] = mapped_column(DateTime, server_default = func.now())
   completed_at: Mapped[datetime] = mapped_column(DateTime, server_default = func.now(), onupdate = func.now())
-  score: Mapped[int] = mapped_column(Integer, server_default = "0")
+  score: Mapped[int] = mapped_column(Integer, CheckConstraint("coins >= 0"), server_default = "0")
 
   quest: Mapped["Quests"] = relationship(
     back_populates = "progresses"
@@ -110,7 +116,7 @@ class Achievement(Base):
   id: Mapped[int] = mapped_column(Integer, primary_key = True, index = True)
   name: Mapped[str] = mapped_column(String(100), nullable = False)
   description: Mapped[str] = mapped_column(Text)
-  reward_coins: Mapped[int] = mapped_column(Integer, server_default = "0")
+  reward_coins: Mapped[int] = mapped_column(Integer, CheckConstraint("coins >= 0"), server_default = "0")
   created_at: Mapped[datetime] = mapped_column(DateTime, server_default = func.now())
   updated_at: Mapped[datetime] = mapped_column(DateTime, server_default = func.now(), onupdate = func.now())
 
@@ -123,7 +129,7 @@ class UserAchievement(Base):
   __table_args__ = (UniqueConstraint("user_id", "achievement_id", name = "uq_user_achievement"),)
 
   id: Mapped[int] = mapped_column(Integer, primary_key = True, index = True)
-  user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"))
+  user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id", name = 'fk_user_achievements_user_id'))
   achievement_id: Mapped[int] = mapped_column(Integer, ForeignKey("achievements.id"))
   achieved_at: Mapped[datetime] = mapped_column(DateTime, server_default = func.now(), onupdate = func.now())
 

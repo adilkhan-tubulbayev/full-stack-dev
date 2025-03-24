@@ -1,9 +1,7 @@
-# create_tables.py
-
 from database import engine
 from models import Base
 
-# Создаём все таблицы, которые ещё не существуют
+# creating tables based on models.py objects
 Base.metadata.create_all(bind=engine)
 
-print("Таблицы успешно созданы!")
+print("Tables added/updated successfully!")
