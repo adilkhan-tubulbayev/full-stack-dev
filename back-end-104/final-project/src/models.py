@@ -33,6 +33,7 @@ class User(Base):
 
   id: Mapped[int] = mapped_column(primary_key = True, index = True)
   name: Mapped[str] = mapped_column(String(100), unique = True, nullable = False)
+  fullname: Mapped[Optional[str]]
   email: Mapped[str] = mapped_column(String(100), unique = True, nullable = False)
   password_hash: Mapped[str] = mapped_column(String(255), nullable = False)
   role: Mapped[UserRole] = mapped_column(Enum(UserRole), server_default = UserRole.STUDENT.value)
