@@ -1,4 +1,4 @@
-# Full Stack Dev Portfolio
+# Full Stack Dev
 
 Monorepo of course projects and personal demos.
 
@@ -7,8 +7,8 @@ Monorepo of course projects and personal demos.
 - **Demos:** `mvp/kazmentor-mvp`, `my-cv-api`, `my-cv`
 
 ## Tech
-- **Frontend:** HTML, CSS, JS, React, Astro  
-- **Backend:** Python, FastAPI, SQLAlchemy  
+- **Frontend:** HTML, CSS, JS, React, Astro, ShadCn, TailwindCSS
+- **Backend:** Python, FastAPI, PostgreSQL, SQLAlchemy 
 - **DevOps:** Docker, GitHub Actions  
 - **Game Dev:** Unity, C#
 
@@ -16,4 +16,4 @@ Monorepo of course projects and personal demos.
 ```bash
 git clone https://github.com/adilkhan-tubulbayev/full-stack-dev.git
 cd full-stack-dev
-# then cd into any subfolder and follow its README
+# then cd into any subfolder for further launching
